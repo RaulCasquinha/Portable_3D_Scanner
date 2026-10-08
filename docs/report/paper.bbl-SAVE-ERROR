@@ -1,0 +1,89 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{wang_mems_2020}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=6febfd7fda62e1c77a555b50c9af4748}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Dingkang},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5bb6aba2ba9da8cdb1a880db56911eea}{%
+           family={Watkins},
+           familyi={W\bibinitperiod},
+           given={Connor},
+           giveni={C\bibinitperiod}}}%
+        {{hash=090788dad1cf697e48660677b5096b15}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Huikai},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute}%
+      }
+      \strng{namehash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{fullhash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{fullhashraw}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{bibnamehash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{authorbibnamehash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{authornamehash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{authorfullhash}{7849cb3f24f03b19218d30f5e9b5b403}
+      \strng{authorfullhashraw}{7849cb3f24f03b19218d30f5e9b5b403}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{In recent years, Light Detection and Ranging ({LiDAR}) has been drawing extensive attention both in academia and industry because of the increasing demand for autonomous vehicles. {LiDAR} is believed to be the crucial sensor for autonomous driving and flying, as it can provide high-density point clouds with accurate three-dimensional information. This review presents an extensive overview of Microelectronechanical Systems ({MEMS}) scanning mirrors specifically for applications in {LiDAR} systems. {MEMS} mirror-based laser scanners have unrivalled advantages in terms of size, speed and cost over other types of laser scanners, making them ideal for {LiDAR} in a wide range of applications. A figure of merit ({FoM}) is defined for {MEMS} mirrors in {LiDAR} scanners in terms of aperture size, field of view ({FoV}) and resonant frequency. Various {MEMS} mirrors based on different actuation mechanisms are compared using the {FoM}. Finally, a preliminary assessment of off-the-shelf {MEMS} scanned {LiDAR} systems is given.}
+      \field{issn}{2072-666X}
+      \field{journaltitle}{Micromachines}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{5}
+      \field{shorttitle}{{MEMS} Mirrors for {LiDAR}}
+      \field{title}{{MEMS} Mirrors for {LiDAR}: A Review}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2026}
+      \field{volume}{11}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{456}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/mi11050456
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/raulc/Zotero/storage/WMC8WIWX/Wang et al. - 2020 - MEMS Mirrors for LiDAR A Review.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2072-666X/11/5/456
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2072-666X/11/5/456
+      \endverb
+      \keyw{laser scanning,{LiDAR},mems mirror,micromirror,optical scanner}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
