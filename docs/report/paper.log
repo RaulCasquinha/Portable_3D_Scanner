@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/nixos.org) (preloaded format=pdflatex 1980.1.1)  8 OCT 2026 21:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/nixos.org) (preloaded format=pdflatex 1980.1.1)  14 OCT 2026 22:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -406,24 +406,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/tex/latex/biblatex/lbx/english.lbx
@@ -437,8 +437,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' found.
  (./paper.bbl)
-Package biblatex Info: Reference section=0 on input line 13.
-Package biblatex Info: Reference segment=0 on input line 13.
+Package biblatex Info: Reference section=0 on input line 15.
+Package biblatex Info: Reference segment=0 on input line 15.
  (/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/tex/latex/graphics/color.sty
 Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
  (/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/tex/latex/graphics-cfg/color.cfg
@@ -461,25 +461,25 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 \makeMPintoPDFobject=\count435
 \everyMPtoPDFconversion=\toks20
 )) (/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 13.
+Package hyperref Info: Link coloring ON on input line 15.
  (./paper.out) (./paper.out)
 \@outlinefile=\write4
 \openout4 = `paper.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 16.
+(Font)              <12> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 16.
+(Font)              <8> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 16.
+(Font)              <6> on input line 18.
  (./paper.toc)
 \tf@toc=\write5
 \openout5 = `paper.toc'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 36.
+(Font)              <7> on input line 42.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 36.
+(Font)              <5> on input line 42.
  [1
 
 {/nix/store/q8n89mjpx6nkbqvjj73wwly2gk4rnj89-texlive-2025-r78234-final-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./paper.aux)
@@ -488,24 +488,24 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 3F9A794F7EC184588E607C697B2D573F;680.
+(rerunfilecheck)             Checksum: 6790FB153CD47BFE4C9031EA9A36139E;788.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17116 strings out of 467535
- 311128 string characters out of 5388798
- 1153361 words of memory out of 5000000
- 45874 multiletter control sequences out of 15000+600000
+ 17118 strings out of 467535
+ 311148 string characters out of 5388798
+ 1154361 words of memory out of 5000000
+ 45875 multiletter control sequences out of 15000+600000
  632484 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,6n,67p,1224b,1824s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr10.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmti10.pfb></nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (2 pages, 108078 bytes).
+Output written on paper.pdf (2 pages, 109649 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 108 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
