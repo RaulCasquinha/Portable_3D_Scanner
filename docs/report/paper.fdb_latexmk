@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber paper"] 0 "paper.bcf" "paper.bbl" "paper" 1792012447.96604 -1
+["biber paper"] 0 "paper.bcf" "paper.bbl" "paper" 1792072470.07152 -1
   "bibliography/references.bib" 1791489667.92644 1811 98c0420b31d1772490da0f99f959db33 ""
-  "paper.bcf" 1792012447.92757 108633 0d0e580829d164332bfa68404a04e253 "pdflatex"
+  "paper.bcf" 1792072470.02613 108633 0d0e580829d164332bfa68404a04e253 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1792012447.35575 "/home/raulc/Documents/Projects/ISEL/Mest_Ano2_Sem1/Portable_3D_Scanner/docs/report/paper.tex" "paper.pdf" "paper" 1792012447.96627 0
-  "/home/raulc/Documents/Projects/ISEL/Mest_Ano2_Sem1/Portable_3D_Scanner/docs/report/paper.tex" 1792012446.56377 640 6cd73853c52eae0c8cfe9a4bee283c16 ""
+["pdflatex"] 1792072469.32396 "/home/raulc/Documents/Projects/ISEL/Mest_Ano2_Sem1/Portable_3D_Scanner/docs/report/paper.tex" "paper.pdf" "paper" 1792072470.07178 0
+  "/home/raulc/Documents/Projects/ISEL/Mest_Ano2_Sem1/Portable_3D_Scanner/docs/report/paper.tex" 1792072468.9826 1048 3a337adf16cfd971f3748122970d2228 ""
   "/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/map/fontname/texfonts.map" 1 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/tfm/public/cm/cmbx10.tfm" 1 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/nix/store/46cm4s2yjrlqhwdswp8bg41kprgxw59q-texlive-2025-r78234-final-env-texmfdist/fonts/tfm/public/cm/cmbx12.tfm" 1 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -91,12 +91,12 @@
   "/nix/store/q8n89mjpx6nkbqvjj73wwly2gk4rnj89-texlive-2025-r78234-final-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5541489 6287d866c9c836b2090fc12325946b42 ""
   "/nix/store/q8n89mjpx6nkbqvjj73wwly2gk4rnj89-texlive-2025-r78234-final-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3637245 4cc1e6e2e4870e114692f8b61528602d ""
   "/nix/store/q8n89mjpx6nkbqvjj73wwly2gk4rnj89-texlive-2025-r78234-final-env/share/texmf-var/web2c/texmf.cnf" 1 44263 234368f488c5abc03485705ded45c34a ""
-  "paper.aux" 1792012447.92557 1408 aaebf56e68fb60b2385283a0ba451b25 "pdflatex"
+  "paper.aux" 1792072470.02341 1408 aaebf56e68fb60b2385283a0ba451b25 "pdflatex"
   "paper.bbl" 1791490622.84389 3979 5e8d96ba045a263633618df658a6aa59 "biber paper"
-  "paper.out" 1792012447.92657 788 6790fb153cd47bfe4c9031ea9a36139e "pdflatex"
-  "paper.run.xml" 1792012447.92917 2325 c7427ec92b136c5e2e4b324521b10a0d "pdflatex"
-  "paper.tex" 1792012446.56377 640 6cd73853c52eae0c8cfe9a4bee283c16 ""
-  "paper.toc" 1792012447.92917 565 dbbf6ebe4c9025185ff37d689356bc18 "pdflatex"
+  "paper.out" 1792072470.02441 788 6790fb153cd47bfe4c9031ea9a36139e "pdflatex"
+  "paper.run.xml" 1792072470.0276 2325 c7427ec92b136c5e2e4b324521b10a0d "pdflatex"
+  "paper.tex" 1792072468.9826 1048 3a337adf16cfd971f3748122970d2228 ""
+  "paper.toc" 1792072470.0276 565 dbbf6ebe4c9025185ff37d689356bc18 "pdflatex"
   (generated)
   "paper.aux"
   "paper.bcf"
