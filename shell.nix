@@ -15,6 +15,7 @@
     xorg.libXi
     fontconfig
     gtk3
+    doxygen
   ];
   runScript = "arduino-ide";
 }).env
