@@ -1,3 +1,8 @@
+/**
+ * @file TransportLayer.cpp
+ * @brief Data_TransportLayer implementation backed by Arduino Serial.
+ */
+
 #include "TransportLayer.h"
 #include <Arduino.h>
 

@@ -1,3 +1,8 @@
+/**
+ * @file IMU.cpp
+ * @brief HAL_IMU implementation using the SparkFun LSM6DS3 library.
+ */
+
 #include "IMU.h"
 #include <Arduino.h>
 #include <SparkFunLSM6DS3.h>
@@ -18,9 +23,9 @@ bool HAL_IMU::read(Orientation& out) {
     float dt = (now - _lastUs) * 1e-6f;
     _lastUs = now;
 
-    // Integrate gyroscope (deg/s -> rad) to track orientation.
-    // Note: gyro integration drifts over time; a complementary or
-    // Madgwick filter should be used for long sessions.
+    // Gyro returns deg/s; multiply by DEG_TO_RAD and dt to get radians.
+    // Pure integration drifts — replace with a complementary/Madgwick
+    // filter for sustained accuracy over long scan sessions.
     _orientation.pitch += _imu.readFloatGyroX() * DEG_TO_RAD * dt;
     _orientation.roll  += _imu.readFloatGyroY() * DEG_TO_RAD * dt;
     _orientation.yaw   += _imu.readFloatGyroZ() * DEG_TO_RAD * dt;

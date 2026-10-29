@@ -1,3 +1,8 @@
+/**
+ * @file LiDAR.cpp
+ * @brief HAL_LiDAR implementation using the Pololu VL53L0X library.
+ */
+
 #include "LiDAR.h"
 #include <Wire.h>
 #include <VL53L0X.h>
