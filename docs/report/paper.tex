@@ -4,13 +4,18 @@
 \usepackage{csquotes}
 \usepackage[backend=biber, style=numeric]{biblatex}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{glossaries}
+
+\makeglossaries
+
 \addbibresource{bibliography/references.bib}   % with the extension
 
 \title{Portable 3D Scanner for Digital Reconstruction}
 \author{Raul Casquinha}
 \date{\today}
 
-
+%Accronims
+\newacronym{imu}{IMU}{Inertial Measurement Unit}
 
 \begin{document}
 
@@ -23,6 +28,11 @@
 \tableofcontents
 
 \section{Introduction}
+"What?"
+This paper presents a portable handheld 3D scanner designed for digital reconstruction applications. 
+"So What?"
+The scanner is made out of off-the-shelf components, including a depth sensor, an \gls{imu}, and a microcontroller.
+A portable 3D scanner is useful for various applications, such as cultural heritage preservation, industrial inspection, and virtual reality content creation. %REFFFF
 
 \section{State of the Art}
 
