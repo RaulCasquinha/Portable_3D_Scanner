@@ -1,0 +1,132 @@
+################################################################################
+# Measurement pipeline — sequence diagram
+# One distance measurement → 3D world point → cloud cluster → mesh
+################################################################################
+
+shape: sequence_diagram
+
+IMU: {
+  label: "LSM6DS3\nIMU"
+  style: {
+    fill: "#3a2008"
+    stroke: "#c87020"
+    font-color: "#f0d090"
+  }
+}
+LiDAR: {
+  label: "VL53L0X\nLiDAR"
+  style: {
+    fill: "#3a2008"
+    stroke: "#c87020"
+    font-color: "#f0d090"
+  }
+}
+Acc: {
+  label: "Accumulator\n(sketch loop)"
+  style: {
+    fill: "#1a3560"
+    stroke: "#4a80c8"
+    font-color: "#d8e8ff"
+  }
+}
+PG: {
+  label: "toWorldPoint()"
+  style: {
+    fill: "#1a3560"
+    stroke: "#4a80c8"
+    font-color: "#d8e8ff"
+  }
+}
+AL: {
+  label: "AppLayer\nencoder"
+  style: {
+    fill: "#1a3560"
+    stroke: "#4a80c8"
+    font-color: "#d8e8ff"
+  }
+}
+USB: {
+  label: "USB-CDC\nSerial"
+  style: {
+    fill: "#1a1a1a"
+    stroke: "#888888"
+    font-color: "#cccccc"
+  }
+}
+Dec: {
+  label: "AppLayerDecoder\n(host)"
+  style: {
+    fill: "#1a4020"
+    stroke: "#3a8050"
+    font-color: "#c8f0d0"
+  }
+}
+Session: {
+  label: "ScanSession"
+  style: {
+    fill: "#1a4020"
+    stroke: "#3a8050"
+    font-color: "#c8f0d0"
+  }
+}
+Cloud: {
+  label: "PointCloud\naccumulator"
+  style: {
+    fill: "#1a4020"
+    stroke: "#3a8050"
+    font-color: "#c8f0d0"
+  }
+}
+Recon: {
+  label: "reconstruction\n.py"
+  style: {
+    fill: "#1a4020"
+    stroke: "#3a8050"
+    font-color: "#c8f0d0"
+  }
+}
+View: {
+  label: "PointCloudView\n(GUI)"
+  style: {
+    fill: "#1a4020"
+    stroke: "#3a8050"
+    font-color: "#c8f0d0"
+  }
+}
+
+# ── On the microcontroller ───────────────────────────────────────────────────
+
+Acc -> IMU: "readOrientation()"
+IMU -> Acc: "pitch, roll, yaw\n+ position (mm)"
+
+Acc -> LiDAR: "readDistance()"
+LiDAR -> Acc: "distance (mm)\nor -1 (invalid)"
+
+Acc -> Acc: "buffer valid reading\n(up to ACC_N = 5)\nor flush early if pose changed"
+
+Acc -> PG: "mean distance + pose"
+PG -> Acc: "world point (x, y, z)\nsensor origin (ox, oy, oz)"
+
+Acc -> AL: "sendPoint(x,y,z, ox,oy,oz)"
+AL -> AL: "frame: 0xAA 0xBB 0x01 0x18\n+ 6×float32 LE + CRC-8"
+AL -> USB: "framed binary packet"
+
+# ── Over USB ────────────────────────────────────────────────────────────────
+
+USB -> Dec: "raw bytes"
+Dec -> Dec: "state machine:\nWAIT_AA→WAIT_BB\n→READ_TYPE→…→CHECK_CRC"
+Dec -> Session: "PointPacket\n(x,y,z, ox,oy,oz)"
+
+# ── On the host ─────────────────────────────────────────────────────────────
+
+Session -> Cloud: "add(point, ray)"
+Cloud -> Cloud: "ray-cluster merge:\n1. ray proximity <5 mm\n2. direction <1.15°\n3. surface proximity <15 mm\n→ update cluster mean\nor create new cluster"
+
+Cloud -> View: "on_cloud_update(pts[])"
+View -> View: "project + depth-colour\ndisplay up to 6000 pts"
+
+# ── On Generate ─────────────────────────────────────────────────────────────
+
+Session -> Recon: "to_numpy_with_normals()"
+Recon -> Recon: "voxel downsample\nstatistical outlier removal\ngrouped-PCA normals\nScreened Poisson"
+Recon -> View: "mesh wireframe\n+ normal vectors"

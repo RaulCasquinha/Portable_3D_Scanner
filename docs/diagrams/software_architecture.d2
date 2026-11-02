@@ -1,16 +1,341 @@
-App
+direction: right
 
-HAL.LiDAR
-HAL.IMU
+################################################################################
+# Firmware — ESP32-S3
+################################################################################
 
-Util.pointGeometry
+Firmware: {
+  label: "Firmware  ·  ESP32-S3"
+  style: {
+    fill: "#0d1b2e"
+    stroke: "#2d5fa0"
+    stroke-width: 2
+    font-size: 16
+    bold: true
+    font-color: "#c8d8f0"
+    border-radius: 8
+  }
 
-Data.TransportLayer
-Data.ApplicationLayer
+  App: {
+    label: "PortableScanner3D.ino\nsetup / loop / accumulator"
+    style: {
+      fill: "#1a3560"
+      stroke: "#4a80c8"
+      font-color: "#d8e8ff"
+      border-radius: 6
+    }
+  }
 
-App -> Util.pointGeometry
-App -> Data.ApplicationLayer
-App -> HAL.LiDAR
-App -> HAL.IMU
+  HAL: {
+    label: "HAL"
+    style: {
+      fill: "#0f2040"
+      stroke: "#2a5090"
+      font-color: "#90b8e8"
+      border-radius: 6
+    }
 
-Data.ApplicationLayer -> Data.TransportLayer
+    LiDAR: {
+      label: "HAL_LiDAR\nVL53L0X · distance mm"
+      style: {
+        fill: "#1a3560"
+        stroke: "#4a80c8"
+        font-color: "#d8e8ff"
+        border-radius: 6
+      }
+    }
+    IMU: {
+      label: "HAL_IMU\nLSM6DS3 · gyro → orientation\naccel → position"
+      style: {
+        fill: "#1a3560"
+        stroke: "#4a80c8"
+        font-color: "#d8e8ff"
+        border-radius: 6
+      }
+    }
+  }
+
+  Util: {
+    label: "Util"
+    style: {
+      fill: "#0f2040"
+      stroke: "#2a5090"
+      font-color: "#90b8e8"
+      border-radius: 6
+    }
+    PointGeometry: {
+      label: "toWorldPoint()\ndistance + pose → (x, y, z)"
+      style: {
+        fill: "#1a3560"
+        stroke: "#4a80c8"
+        font-color: "#d8e8ff"
+        border-radius: 6
+      }
+    }
+  }
+
+  Data: {
+    label: "Data"
+    style: {
+      fill: "#0f2040"
+      stroke: "#2a5090"
+      font-color: "#90b8e8"
+      border-radius: 6
+    }
+    AppLayer: {
+      label: "AppLayer\npacket encoder + CRC-8"
+      style: {
+        fill: "#1a3560"
+        stroke: "#4a80c8"
+        font-color: "#d8e8ff"
+        border-radius: 6
+      }
+    }
+    Transport: {
+      label: "TransportLayer\nSerial.write()"
+      style: {
+        fill: "#1a3560"
+        stroke: "#4a80c8"
+        font-color: "#d8e8ff"
+        border-radius: 6
+      }
+    }
+    AppLayer -> Transport: ""
+  }
+
+  App -> HAL.LiDAR: "readDistance()"
+  App -> HAL.IMU: "orientation\nposition"
+  HAL.LiDAR -> Util.PointGeometry: "mm"
+  HAL.IMU -> Util.PointGeometry: "pose"
+  Util.PointGeometry -> Data.AppLayer: "Point3D"
+  App -> Data.AppLayer: "POSE / LOG"
+}
+
+################################################################################
+# USB link
+################################################################################
+
+USB: {
+  label: "USB-CDC Serial · 115 200 baud"
+  shape: rectangle
+  style: {
+    fill: "#1a1a1a"
+    stroke: "#888888"
+    font-color: "#cccccc"
+    font-size: 13
+    bold: true
+    border-radius: 6
+  }
+}
+
+Firmware.Data.Transport -> USB: "" {
+  style: {
+    stroke: "#4a80c8"
+    stroke-width: 2
+  }
+}
+USB -> Host.Transport: "" {
+  style: {
+    stroke: "#4a8050"
+    stroke-width: 2
+  }
+}
+
+################################################################################
+# Host — Python + DearPyGUI
+################################################################################
+
+Host: {
+  label: "Host PC  ·  Python + DearPyGUI"
+  style: {
+    fill: "#0d2010"
+    stroke: "#2a7040"
+    stroke-width: 2
+    font-size: 16
+    bold: true
+    font-color: "#c8f0d0"
+    border-radius: 8
+  }
+
+  Transport: {
+    label: "SerialTransport\nnon-blocking read thread"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      border-radius: 6
+    }
+  }
+
+  Protocol: {
+    label: "AppLayerDecoder\nbyte stream → typed packets"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      border-radius: 6
+    }
+  }
+
+  Sessions: {
+    label: "Session (one active at a time)"
+    style: {
+      fill: "#102810"
+      stroke: "#286040"
+      font-color: "#90d0a0"
+      border-radius: 6
+    }
+
+    Scan: {
+      label: "ScanSession\nreal device backend"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    Sim: {
+      label: "SimSession\nray-cast simulator"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+  }
+
+  Data: {
+    label: "Domain Data"
+    style: {
+      fill: "#102810"
+      stroke: "#286040"
+      font-color: "#90d0a0"
+      border-radius: 6
+    }
+
+    Cloud: {
+      label: "PointCloud\nray-cluster store"
+      shape: cylinder
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+      }
+    }
+    Pose: {
+      label: "DevicePose\nposition + orientation"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+  }
+
+  Processing: {
+    label: "reconstruction.py\ngrouped-PCA normals · Poisson"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      border-radius: 6
+    }
+  }
+
+  GUI: {
+    label: "GUI  (DearPyGUI)"
+    style: {
+      fill: "#102810"
+      stroke: "#286040"
+      font-color: "#90d0a0"
+      border-radius: 6
+    }
+
+    Main: {
+      label: "MainWindow\ntoolbar + session wiring"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    CloudView: {
+      label: "PointCloudView\n3D orbit · depth colour · dual mesh"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    ReconWin: {
+      label: "ReconstructionWindow\nPCA params · Generate · STL"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    DeviceView: {
+      label: "DeviceView\nLive Info panel"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    LogView: {
+      label: "LogView"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+    SimWin: {
+      label: "SimulatorWindow\nnoise · orbit · fast-forward"
+      style: {
+        fill: "#1a4020"
+        stroke: "#3a8050"
+        font-color: "#c8f0d0"
+        border-radius: 6
+      }
+    }
+  }
+
+  # Decode path
+  Transport -> Protocol: "raw bytes"
+  Protocol -> Sessions.Scan: "PointPacket\nPosePacket\nLogPacket"
+
+  # Session → data stores
+  Sessions.Scan -> Data.Cloud: "add point"
+  Sessions.Scan -> Data.Pose: "update"
+  Sessions.Sim -> Data.Cloud: "add point"
+  Sessions.Sim -> Data.Pose: "update"
+
+  # Session → GUI events
+  Sessions.Scan -> GUI.Main: "on_cloud\non_pose\non_log"
+  Sessions.Sim -> GUI.Main: "on_cloud\non_pose\non_log"
+
+  # Data stores → GUI consumers
+  Data.Cloud -> GUI.CloudView: "pts[ ]"
+  Data.Pose -> GUI.DeviceView: "pos, orient"
+
+  # Reconstruction path
+  Data.Cloud -> Processing: "to_numpy_with_normals()"
+  Processing -> GUI.CloudView: "mesh wireframe\nnormal vectors"
+
+  # Main wires sub-panels
+  GUI.Main -> GUI.CloudView: ""
+  GUI.Main -> GUI.ReconWin: ""
+  GUI.Main -> GUI.DeviceView: ""
+  GUI.Main -> GUI.LogView: ""
+  GUI.Main -> GUI.SimWin: ""
+}

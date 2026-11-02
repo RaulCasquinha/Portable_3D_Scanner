@@ -1,0 +1,178 @@
+direction: down
+
+################################################################################
+# System Overview — three tiers
+################################################################################
+
+Hardware: {
+  label: "Hardware"
+  style: {
+    fill: "#1c1008"
+    stroke: "#c87020"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#f0c060"
+    border-radius: 8
+  }
+
+  ESP32: {
+    label: "ESP32-S3\nMain MCU · USB-CDC · 240 MHz"
+    shape: rectangle
+    style: {
+      fill: "#3a2008"
+      stroke: "#c87020"
+      font-color: "#f0c060"
+      font-size: 14
+      bold: true
+      border-radius: 6
+    }
+  }
+
+  VL53L0X: {
+    label: "VL53L0X\nTime-of-Flight LiDAR\n±12 mm · 0–2 m range\n33 ms measurement cycle"
+    shape: rectangle
+    style: {
+      fill: "#2a1808"
+      stroke: "#c87020"
+      font-color: "#f0d090"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  LSM6DS3: {
+    label: "LSM6DS3\n6-axis IMU\ngyroscope + accelerometer\norientation + position"
+    shape: rectangle
+    style: {
+      fill: "#2a1808"
+      stroke: "#c87020"
+      font-color: "#f0d090"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  VL53L0X -> ESP32: "I²C" {
+    style.stroke: "#c87020"
+    style.stroke-width: 2
+  }
+  LSM6DS3 -> ESP32: "I²C (shared bus)" {
+    style.stroke: "#c87020"
+    style.stroke-width: 2
+  }
+}
+
+Firmware: {
+  label: "Firmware  (C++ · Arduino)"
+  style: {
+    fill: "#0d1b2e"
+    stroke: "#2d5fa0"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#c8d8f0"
+    border-radius: 8
+  }
+
+  Acc: {
+    label: "Scan-and-Average Accumulator\n5 readings → 1 transmitted point\nearly flush on >1° rotation or >2 mm translation"
+    style: {
+      fill: "#1a3560"
+      stroke: "#4a80c8"
+      font-color: "#d8e8ff"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Proto: {
+    label: "Binary Packet Protocol\n[ 0xAA 0xBB | TYPE | LEN | PAYLOAD | CRC-8 ]\nPOINT · POSE · LOG"
+    style: {
+      fill: "#1a3560"
+      stroke: "#4a80c8"
+      font-color: "#d8e8ff"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Acc -> Proto: "world-space point\n(x, y, z, ox, oy, oz)"
+}
+
+HostPC: {
+  label: "Host PC  (Python · DearPyGUI)"
+  style: {
+    fill: "#0d2010"
+    stroke: "#2a7040"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#c8f0d0"
+    border-radius: 8
+  }
+
+  Decode: {
+    label: "Packet Decoder + Session\nbyte stream → PointPacket / PosePacket"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Cloud: {
+    label: "Point Cloud Accumulator\nray-cluster merge\ndirection · proximity · occlusion guard"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Recon: {
+    label: "Surface Reconstruction\ngrouped-PCA normals\nScreened Poisson → triangle mesh"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Viz: {
+    label: "3D Visualiser\norbit camera · depth colour\nimported model + Poisson wireframe overlay"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+
+  Decode -> Cloud: "surface point + ray"
+  Cloud -> Recon: "point cloud"
+  Cloud -> Viz: "pts[ ]"
+  Recon -> Viz: "mesh wireframe\nnormal vectors"
+}
+
+Hardware.ESP32 -> Firmware.Acc: "distance mm\norientation\nposition" {
+  style.stroke: "#c87020"
+  style.stroke-width: 2
+}
+
+Firmware.Proto -> HostPC.Decode: "USB-CDC Serial\n115 200 baud" {
+  style: {
+    stroke: "#888888"
+    stroke-width: 3
+    stroke-dash: 4
+    bold: true
+    font-color: "#aaaaaa"
+  }
+}

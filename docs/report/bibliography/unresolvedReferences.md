@@ -8,3 +8,6 @@ https://grabcad.com/library/vl53l0x-4
 https://grabcad.com/library/esp32-s3-wroom-1-1
 https://grabcad.com/library/lsm6ds3-imu-1
 https://grabcad.com/library/female-header-pins-2
+
+https://www.cs.jhu.edu/~misha/MyPapers/ToG13.pdf
+https://dl.acm.org/doi/10.5555/1281957.1281965

@@ -1,1 +1,66 @@
+# ── Arduino ──────────────────────────────────────────────────────────────────
+# Third-party libraries installed via Library Manager — not part of the source
+ArduinoProject/libraries/
+
+# Arduino IDE build cache
+ArduinoProject/**/.cache/
+build/
+
+# ── Python ───────────────────────────────────────────────────────────────────
+PythonProject/.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+*.egg
+
+# ── LaTeX ────────────────────────────────────────────────────────────────────
+# Keep only the source (.tex/.bib) and final PDF; ignore all build artifacts
+docs/report/*.aux
+docs/report/*.bbl
+docs/report/*.bbl-*
+docs/report/*.bcf
+docs/report/*.blg
+docs/report/*.fdb_latexmk
+docs/report/*.fls
+docs/report/*.glo
+docs/report/*.ist
+docs/report/*.lof
+docs/report/*.log
+docs/report/*.lot
+docs/report/*.out
+docs/report/*.run.xml
+docs/report/*.synctex.gz
+docs/report/*.toc
+docs/report/*.nav
+docs/report/*.snm
+docs/report/*.vrb
+docs/report/_minted*/
+
+# ── DearPyGUI layout ─────────────────────────────────────────────────────────
+# User-specific window positions — each machine will have its own
+layout.ini
+**/layout.ini
+
+# ── Generated docs ───────────────────────────────────────────────────────────
 ArduinoProject/doxy_docs/
+docs/report/out/
+docs/diagrams/out/
+
+# ── Scan output files ─────────────────────────────────────────────────────────
+*.ply
+*.stl
+
+# ── Claude Code project instructions ────────────────────────────────────────
+CLAUDE.md
+
+# ── OS / editor noise ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,240 @@
+################################################################################
+# Packet framing format + decoder state machine
+################################################################################
+
+direction: down
+
+# ── Packet byte layout ────────────────────────────────────────────────────────
+
+Layout: {
+  label: "Packet Wire Format"
+  style: {
+    fill: "#0d1b2e"
+    stroke: "#2d5fa0"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#c8d8f0"
+    border-radius: 8
+  }
+
+  B0: {
+    label: "0xAA\nSync 1"
+    style: {
+      fill: "#7a2020"
+      stroke: "#c04040"
+      font-color: "#ffd0d0"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+  B1: {
+    label: "0xBB\nSync 2"
+    style: {
+      fill: "#7a2020"
+      stroke: "#c04040"
+      font-color: "#ffd0d0"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+  B2: {
+    label: "TYPE\n1 byte"
+    style: {
+      fill: "#20507a"
+      stroke: "#4090c0"
+      font-color: "#d0e8ff"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+  B3: {
+    label: "LEN\n1 byte"
+    style: {
+      fill: "#20507a"
+      stroke: "#4090c0"
+      font-color: "#d0e8ff"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+  B4: {
+    label: "PAYLOAD\nLEN bytes"
+    style: {
+      fill: "#205a30"
+      stroke: "#40a060"
+      font-color: "#d0ffd8"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+  B5: {
+    label: "CRC-8\n1 byte"
+    style: {
+      fill: "#60480a"
+      stroke: "#c09020"
+      font-color: "#fff0b0"
+      font-size: 13
+      border-radius: 4
+    }
+  }
+
+  B0 -> B1 -> B2 -> B3 -> B4 -> B5: ""
+}
+
+# ── Packet types ──────────────────────────────────────────────────────────────
+
+Types: {
+  label: "Packet Types"
+  style: {
+    fill: "#0d1b2e"
+    stroke: "#2d5fa0"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#c8d8f0"
+    border-radius: 8
+  }
+
+  POINT: {
+    label: "POINT  0x01  · 24 bytes\nx  y  z  ox  oy  oz\n(6 × float32 LE)\nworld point + sensor origin"
+    style: {
+      fill: "#1a4020"
+      stroke: "#3a8050"
+      font-color: "#c8f0d0"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+  POSE: {
+    label: "POSE  0x02  · 24 bytes\npx  py  pz  pitch  roll  yaw\n(6 × float32 LE)\nposition mm + orientation rad"
+    style: {
+      fill: "#1a3560"
+      stroke: "#4a80c8"
+      font-color: "#d8e8ff"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+  LOG: {
+    label: "LOG  0x03  · variable\nUTF-8 string\nmax 251 bytes\ndevice status / errors"
+    style: {
+      fill: "#3a2008"
+      stroke: "#c87020"
+      font-color: "#f0d090"
+      font-size: 13
+      border-radius: 6
+    }
+  }
+}
+
+# ── CRC note ──────────────────────────────────────────────────────────────────
+
+CRC: {
+  label: "CRC-8 / SMBUS\npoly 0x07  ·  init 0x00\ncomputed over TYPE + LEN + PAYLOAD\ncorrupt packets silently dropped"
+  style: {
+    fill: "#2a2208"
+    stroke: "#c09020"
+    font-color: "#fff0b0"
+    font-size: 13
+    border-radius: 6
+  }
+}
+
+# ── Decoder state machine ─────────────────────────────────────────────────────
+
+FSM: {
+  label: "Decoder State Machine"
+  style: {
+    fill: "#100818"
+    stroke: "#7040a0"
+    stroke-width: 2
+    font-size: 15
+    bold: true
+    font-color: "#e0c8ff"
+    border-radius: 8
+  }
+
+  WAIT_AA: {
+    label: "WAIT_AA\ndiscard all bytes"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  WAIT_BB: {
+    label: "WAIT_BB"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  READ_TYPE: {
+    label: "READ_TYPE"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  READ_LEN: {
+    label: "READ_LEN"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  READ_PAYLOAD: {
+    label: "READ_PAYLOAD\ncollect LEN bytes"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  CHECK_CRC: {
+    label: "CHECK_CRC"
+    shape: oval
+    style: {
+      fill: "#301850"
+      stroke: "#9060d0"
+      font-color: "#e0c8ff"
+      font-size: 13
+    }
+  }
+  DISPATCH: {
+    label: "DISPATCH\nfire callback"
+    shape: oval
+    style: {
+      fill: "#1a4020"
+      stroke: "#40a060"
+      font-color: "#c8f0d0"
+      font-size: 13
+    }
+  }
+
+  WAIT_AA -> WAIT_BB: "byte == 0xAA"
+  WAIT_AA -> WAIT_AA: "other"
+  WAIT_BB -> READ_TYPE: "byte == 0xBB"
+  WAIT_BB -> WAIT_BB: "byte == 0xAA\n(stay — new sync start)"
+  WAIT_BB -> WAIT_AA: "other"
+  READ_TYPE -> READ_LEN: "store TYPE"
+  READ_LEN -> READ_PAYLOAD: "store LEN"
+  READ_PAYLOAD -> CHECK_CRC: "LEN bytes collected"
+  CHECK_CRC -> DISPATCH: "CRC match"
+  CHECK_CRC -> WAIT_AA: "CRC fail\n(resync)"
+  DISPATCH -> WAIT_AA: "done"
+}
