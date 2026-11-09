@@ -24,3 +24,7 @@ Mechanical design files for the printed enclosure that houses the ESP32-S3, VL53
 - Material: PLA, 0.2 mm layer height
 - The `Body` holds the sensor PCB and ESP32-S3 module with cable routing channels
 - The `MountedPiece` clips onto the body and provides a grip surface
+
+## Showcase images
+
+![Showcase image](docs/ShowcaseImages/Screenshot_2026-11-09_22-24-32.png)
