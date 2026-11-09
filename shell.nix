@@ -45,14 +45,18 @@ pkgs.mkShell {
     echo "  Arduino IDE  →  arduino-ide-env"
     echo "  Python       →  $(python3 --version)"
     echo "  Docs         →  cd ArduinoProject && ./generate_docs.sh"
+    echo "  Build exe    →  cd PythonProject && pyinstaller --onefile --windowed --name PortableScanner3D --collect-all dearpygui main.py"
 
     VENV="$PWD/PythonProject/.venv"
     if [ ! -d "$VENV" ]; then
       echo "Creating Python venv and installing packages..."
       python3.12 -m venv "$VENV" --system-site-packages
-      "$VENV/bin/pip" install dearpygui trimesh rtree open3d
     fi
     source "$VENV/bin/activate"
+    # requirements-dev.txt pulls in requirements.txt plus PyInstaller, so the
+    # shell is ready to both run and package the app. Re-run on every entry
+    # so new dependencies get picked up without having to delete .venv.
+    pip install -q -r "$PWD/PythonProject/requirements-dev.txt"
 
     # Expose libstdc++, OpenGL, X11, udev to pre-compiled wheels.
     # On NixOS these are not in /usr/lib so the bundled .so can't find them.
