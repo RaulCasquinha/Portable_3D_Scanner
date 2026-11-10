@@ -1,0 +1,4 @@
+# Develop and build: the app's requirements, plus the tools
+-r requirements.txt
+pyinstaller
+pyflakes

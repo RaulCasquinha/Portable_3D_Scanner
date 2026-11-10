@@ -1,0 +1,13 @@
+../Application/App/Src/app.c:76:6:APP_Init	1
+../Application/App/Src/app.c:80:16:APP_Run	3
+../Application/App/Src/app.c:103:13:HandleCommand	6
+../Application/App/Src/app.c:136:13:Calibrate	2
+../Application/App/Src/app.c:145:13:SetStreaming	1
+../Application/App/Src/app.c:151:13:StreamWhileIdle	4
+../Application/App/Src/app.c:167:13:SendReadingIfDue	3
+../Application/App/Src/app.c:181:13:SendTemperatureIfDue	3
+../Application/App/Src/app.c:194:13:SendCaptureTemperature	2
+../Application/App/Src/app.c:208:13:CheckSent	2
+../Application/App/Src/app.c:219:13:ReadAndStream	2
+../Application/App/Src/app.c:229:28:GetCaptureInput	6
+../Application/App/Src/app.c:256:13:OnCaptureEvent	3

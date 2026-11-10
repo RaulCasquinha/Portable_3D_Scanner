@@ -1,0 +1,21 @@
+{
+  "positions": 6,
+  "samples": 100,
+  "references": "none (magnitude only)",
+  "term.bias": true,
+  "term.scale": true,
+  "term.nonortho": false,
+  "smoothing": true,
+  "smoothing_s": 0.07999999821186066,
+  "stream_s": 10.0,
+  "tilt_mode": "roll / pitch",
+  "sphere_tint": 30,
+  "sphere_highlight": 20,
+  "sphere_marks_behind": true,
+  "show_reference": true,
+  "cal_source": "PC fit",
+  "apply.bias": true,
+  "apply.scale": true,
+  "apply.nonortho": true,
+  "apply.misalignment": true
+}

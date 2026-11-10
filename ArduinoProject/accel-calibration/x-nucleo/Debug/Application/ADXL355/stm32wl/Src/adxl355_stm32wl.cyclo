@@ -1,0 +1,14 @@
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:26:6:ADXL355_STM32WL_DelayMs	1
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:66:26:ADXL355_STM32WL_ConfigSpi	4
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:82:18:ADXL355_STM32WL_ReadSpi	6
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:115:18:ADXL355_STM32WL_ReadSpiDma	5
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:147:18:ADXL355_STM32WL_WriteSpi	6
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:180:6:ADXL355_STM32WL_IsSpiDmaBusy	1
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:185:6:ADXL355_STM32WL_SpiRxCpltHandler	4
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:196:27:ADXL355_STM32WL_GetSpiPlatform	1
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:212:25:CheckSpiTransfer	5
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:230:13:WaitForDmaIdle	3
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:255:25:SendCommand	4
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:280:13:SelectDevice	1
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:291:13:DeselectDevice	1
+../Application/ADXL355/stm32wl/Src/adxl355_stm32wl.c:417:13:IsValidSize	3

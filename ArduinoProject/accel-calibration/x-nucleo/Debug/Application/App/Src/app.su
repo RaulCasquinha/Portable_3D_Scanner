@@ -1,0 +1,13 @@
+../Application/App/Src/app.c:76:6:APP_Init	8	static
+../Application/App/Src/app.c:80:16:APP_Run	8	static
+../Application/App/Src/app.c:103:13:HandleCommand	48	static
+../Application/App/Src/app.c:136:13:Calibrate	16	static
+../Application/App/Src/app.c:145:13:SetStreaming	16	static
+../Application/App/Src/app.c:151:13:StreamWhileIdle	24	static
+../Application/App/Src/app.c:167:13:SendReadingIfDue	32	static
+../Application/App/Src/app.c:181:13:SendTemperatureIfDue	16	static
+../Application/App/Src/app.c:194:13:SendCaptureTemperature	24	static
+../Application/App/Src/app.c:208:13:CheckSent	16	static
+../Application/App/Src/app.c:219:13:ReadAndStream	16	static
+../Application/App/Src/app.c:229:28:GetCaptureInput	16	static
+../Application/App/Src/app.c:256:13:OnCaptureEvent	16	static

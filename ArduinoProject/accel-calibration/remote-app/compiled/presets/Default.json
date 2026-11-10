@@ -1,0 +1,12 @@
+{
+  "positions": 6,
+  "samples": 100,
+  "references": "none (magnitude only)",
+  "term.bias": true,
+  "term.scale": true,
+  "term.nonortho": false,
+  "vector_hz": 2.0,
+  "stream_s": 10.0,
+  "show_reference": true,
+  "cal_source": "PC fit"
+}

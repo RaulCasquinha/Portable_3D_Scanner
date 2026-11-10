@@ -1,0 +1,4 @@
+../Application/App/Src/app_link.c:21:19:APP_LINK_Init	8	static
+../Application/App/Src/app_link.c:28:19:APP_LINK_Send	24	static
+../Application/App/Src/app_link.c:43:19:APP_LINK_ReceiveByte	16	static
+../Application/App/Src/app_link.c:61:19:APP_LINK_WaitForByte	24	static

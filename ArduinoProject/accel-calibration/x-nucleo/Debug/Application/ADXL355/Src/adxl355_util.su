@@ -1,0 +1,12 @@
+../Application/ADXL355/Src/adxl355_util.c:36:18:ADXL355_UTIL_Config	24	static
+../Application/ADXL355/Src/adxl355_util.c:130:18:ADXL355_UTIL_UnpackSampleSets	40	static
+../Application/ADXL355/Src/adxl355_util.c:148:18:ADXL355_UTIL_SampleSets2Gs	48	static
+../Application/ADXL355/Src/adxl355_util.c:182:18:ADXL355_UTIL_ClearFifo	304	static
+../Application/ADXL355/Src/adxl355_util.c:191:18:ADXL355_UTIL_ActivityThreshold2LSB	32	static
+../Application/ADXL355/Src/adxl355_util.c:223:18:ADXL355_UTIL_Offset2LSB	32	static
+../Application/ADXL355/Src/adxl355_util.c:255:18:ADXL355_UTIL_AlignFifo	32	static
+../Application/ADXL355/Src/adxl355_util.c:303:18:ADXL355_UTIL_ReadTemperature	24	static
+../Application/ADXL355/Src/adxl355_util.c:327:18:ADXL355_UTIL_ReadTemperatureMdegc	32	static
+../Application/ADXL355/Src/adxl355_util.c:354:18:ADXL355_UTIL_ResetAndVerify	40	static
+../Application/ADXL355/Src/adxl355_util.c:427:25:GetSensitivity	16	static
+../Application/ADXL355/Src/adxl355_util.c:455:16:UnpackAxis	24	static

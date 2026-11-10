@@ -1,0 +1,6 @@
+../Application/App/Src/app_accel.c:50:6:APP_ACCEL_Init	5
+../Application/App/Src/app_accel.c:73:6:APP_ACCEL_ReadG	5
+../Application/App/Src/app_accel.c:93:6:APP_ACCEL_ReadTemperature	1
+../Application/App/Src/app_accel.c:99:13:IsNewSample	1
+../Application/App/Src/app_accel.c:182:13:SetSpiMode	1
+../Application/App/Src/app_accel.c:190:13:WaitForNewSample	4

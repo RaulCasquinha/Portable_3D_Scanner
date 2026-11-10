@@ -1,0 +1,9 @@
+../Application/ADXL345/Src/adxl345_util.c:27:18:ADXL345_UTIL_Config	24	static
+../Application/ADXL345/Src/adxl345_util.c:221:18:ADXL345_UTIL_UnpackSampleSets	40	static
+../Application/ADXL345/Src/adxl345_util.c:240:18:ADXL345_UTIL_SampleSets2Gs	48	static
+../Application/ADXL345/Src/adxl345_util.c:274:18:ADXL345_UTIL_ClearFifo	224	static
+../Application/ADXL345/Src/adxl345_util.c:288:18:ADXL345_UTIL_Threshold2LSB	24	static
+../Application/ADXL345/Src/adxl345_util.c:310:18:ADXL345_UTIL_Offset2LSB	24	static
+../Application/ADXL345/Src/adxl345_util.c:343:25:GetSensitivity	16	static
+../Application/ADXL345/Src/adxl345_util.c:379:16:UnpackAxis	24	static
+../Application/ADXL345/Src/adxl345_util.c:403:16:DivideRounded	24	static

@@ -1,0 +1,175 @@
+# Software architecture of the accelerometer calibration app.
+# Render: bash docs/diagrams/compile.sh (writes out/architecture.svg and .png)
+#
+# Every module belongs to one layer and imports only from layers below it.
+# Arrows point from the user of a module to the module it uses.
+
+direction: down
+
+title: |md
+  # Accel Calib App: software architecture
+  Each layer only uses the layers below it. `processing` is a reusable library (numpy only).
+| {near: top-center}
+
+classes: {
+  layer: {
+    style: {border-radius: 8; stroke-width: 2; font-size: 22; bold: true}
+  }
+  module: {
+    shape: rectangle
+    style: {border-radius: 4; font-size: 15}
+  }
+  window: {
+    shape: rectangle
+    style: {border-radius: 4; font-size: 15; fill: "#E8F1FB"}
+  }
+  external: {
+    shape: cylinder
+    style: {font-size: 15; fill: "#F4F4F4"}
+  }
+}
+
+entry: "main.py\nargs, DearPyGui setup, layout ini,\nframe loop, --smoke" {class: module}
+
+gui: "gui: view (the only code that imports dearpygui)" {
+  class: layer
+  style.fill: "#F2F7FD"
+
+  app: "app.py\nApp: windows, keys,\ndefault layout, frame dispatch" {class: module}
+  menu_bar: "menu_bar.py\nMenuBar: top bar, show/hide\nwindows, workspaces" {class: module}
+
+  windows: "windows/ (one module per window)" {
+    style.fill: "#FFFFFF"
+    connection: "connection.py\nConnection: port,\nstream / stop" {class: window}
+    controls: "controls.py\nControls: status, capture" {class: window}
+    settings: "calibration_settings.py\nCalibration settings: capture,\nterms, presets" {class: window}
+    procedure: "procedure.py\nCalibration procedure:\ntemperatures, positions" {class: window}
+    display: "display_settings.py\nDisplay settings: pause,\nsource, applied terms, smoothing" {class: window}
+    stream: "stream.py\nLive stream: x y z |g|" {class: window}
+    tilt: "tilt.py\nTilt: roll / pitch or\naxis angles mode" {class: window}
+    errors: "errors.py\nErrors: reading minus reference" {class: window}
+    sphere: "status_sphere.py\nStatus sphere: positions" {class: window}
+    parameters: "parameters.py\nParameters: table, C defines" {class: window}
+    records: "records.py\nRecords: save, list,\nticks, record text" {class: window}
+    temperature: "temperature.py\nTemperature analysis: trend plot" {class: window}
+    board_log: "board_log.py\nBoard messages" {class: window}
+  }
+
+  widgets: "widgets/" {
+    style.fill: "#FFFFFF"
+    hover_help: "hover_help.py\nHoverHelp" {class: module}
+    orbit3d: "orbit3d.py\nOrbit3D" {class: module}
+    plots: "plots.py\nseries, time plots" {class: module}
+  }
+  style_tips: "style.py, tips.py\ncolours, fonts, hover text" {class: module}
+
+  app -> windows
+  app -> menu_bar
+  menu_bar -> windows: "show, hide,\nplace"
+  windows -> widgets
+  windows -> style_tips
+}
+
+controller: "controller: app state, no GUI code" {
+  class: layer
+  style.fill: "#F3FAF3"
+  board: "board.py\nBoard: connection, stream, capture,\ncalibration in use, commands" {class: module}
+  record_browser: "record_browser.py\nRecordBrowser: listed, selected and\nticked records; load, save, merge" {class: module}
+  live_view: "live_view.py\nlive_view(): plotted window,\nmeans, nearest axis" {class: module}
+  record_browser -> board: "load a record"
+  live_view -> board
+}
+
+services: "services: use cases, no state" {
+  class: layer
+  style.fill: "#FDF8EE"
+  calibrate: "calibrate.py\ncapture -> Calibration" {class: module}
+  merge: "merge.py\nsimple records -> compensated record" {class: module}
+  export: "export.py\nCalibration -> C defines" {class: module}
+  report: "report.py\ntables and record texts" {class: module}
+  merge -> export
+}
+
+storage: "storage: files" {
+  class: layer
+  style.fill: "#F8F3FB"
+  paths: "paths.py\nfolders and files" {class: module}
+  file_names: "file_names.py\nclean_name()" {class: module}
+  record_format: "record_format.py\nrecord dict <-> Calibration, Capture" {class: module}
+  record_store: "record_store.py\ncalibrations/<sensor>/<time>.json" {class: module}
+  preset_store: "preset_store.py\npresets/<name>.json,\nworkspaces/<name>.json" {class: module}
+  preset_store -> file_names
+}
+
+session: "session: state built from messages" {
+  class: layer
+  style.fill: "#EEF8F8"
+  capture: "capture.py\nCapture: positions, references,\nstd, temperatures, placement" {class: module}
+  live_buffer: "live_buffer.py\nLiveBuffer: recent readings" {class: module}
+  temperature_log: "temperature_log.py\nTemperatureLog" {class: module}
+  calibration: "calibration.py\nCalibration: model in use,\nterms, rms, compensation" {class: module}
+}
+
+protocol: "protocol: lines <-> messages, pure" {
+  class: layer
+  style.fill: "#FFF1EE"
+  messages: "messages.py\nReading, Temperature, Position, ..." {class: module}
+  codec: "codec.py\nparse_line(), format_start(), keys" {class: module}
+  codec -> messages
+}
+
+transport: "transport: bytes" {
+  class: layer
+  style.fill: "#FFF1EE"
+  serial_link: "serial_link.py\nSerialLink: port, reader thread,\nline queue, timed sends" {class: module}
+}
+
+processing: "processing: reusable library (numpy only)" {
+  class: layer
+  style.fill: "#EEF2FF"
+  sfem: "sfem.py\nCalibrationModel  K = M C S" {class: module}
+  ellipsoid_fit: "ellipsoid_fit.py\nfit_ellipsoid()" {class: module}
+  alignment: "alignment.py\nfit_alignment()" {class: module}
+  regression: "regression.py\nLinearTrend" {class: module}
+  compensation: "compensation.py\nTemperatureCompensation" {class: module}
+  geometry: "geometry.py\nunit, roll pitch,\naxis angles, snap to axis" {class: module}
+  statistics: "statistics.py\nrms |g| error" {class: module}
+  placement: "placement.py\nposition and reference checks" {class: module}
+
+  ellipsoid_fit -> sfem
+  alignment -> sfem
+  compensation -> regression
+  compensation -> sfem
+  placement -> geometry
+}
+
+nucleo: "Nucleo board\nAccel_Calib_stm32\n(ST-LINK VCOM 115200)" {class: external}
+files: "calibrations/  presets/\nlayout ini" {class: external}
+
+# Layer to layer
+entry -> gui.app
+gui.windows -> controller: "read state,\ncall commands"
+gui.windows -> services.report
+gui.app -> storage.record_store
+gui.app -> storage.preset_store
+controller.board -> transport.serial_link
+controller.board -> protocol.codec
+controller.board -> session
+controller.board -> services.calibrate
+controller.board -> services.export
+controller.board -> storage.record_format
+controller.record_browser -> storage.record_store
+controller.record_browser -> storage.file_names
+controller.record_browser -> services.merge
+controller.live_view -> processing.geometry
+services.calibrate -> processing
+services.merge -> storage.record_format
+services.merge -> processing.compensation
+services.report -> storage.record_format
+storage.record_format -> session
+session.capture -> protocol.messages
+session.capture -> processing.placement
+session.calibration -> processing
+transport.serial_link -> nucleo: "lines"
+storage.record_store -> files
+storage.preset_store -> files

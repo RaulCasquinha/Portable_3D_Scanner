@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+.venv/
+
+# PyInstaller temporary files (the executable goes in compiled/)
+build/
+
+# What DearPyGui keeps of the windows on this PC (also compiled/app_layout.ini)
+app_layout.ini
+
+# Screenshots of --smoke runs
+shot.png

@@ -1,0 +1,97 @@
+{
+  "area": [
+    1920,
+    984.0
+  ],
+  "windows": {
+    "win_connection": [
+      0,
+      0.0,
+      1235,
+      100
+    ],
+    "win_controls": [
+      62,
+      255.0,
+      605,
+      385
+    ],
+    "win_settings": [
+      384,
+      447.0,
+      605,
+      487
+    ],
+    "win_procedure": [
+      0,
+      320.0,
+      0,
+      0
+    ],
+    "win_display": [
+      0,
+      226.0,
+      424,
+      221
+    ],
+    "win_stream": [
+      352,
+      0.0,
+      1516,
+      984
+    ],
+    "win_tilt": [
+      351,
+      0.0,
+      1494,
+      984
+    ],
+    "win_errors": [
+      560,
+      609.0,
+      0,
+      0
+    ],
+    "win_calib": [
+      561,
+      0.0,
+      424,
+      535
+    ],
+    "win_params": [
+      1237,
+      0.0,
+      683,
+      489
+    ],
+    "win_records": [
+      1237,
+      491.0,
+      683,
+      493
+    ],
+    "win_temp": [
+      0,
+      100.0,
+      1235,
+      884
+    ],
+    "win_board_log": [
+      0,
+      -25.0,
+      0,
+      0
+    ]
+  },
+  "hidden": [
+    "win_controls",
+    "win_settings",
+    "win_procedure",
+    "win_display",
+    "win_stream",
+    "win_tilt",
+    "win_errors",
+    "win_calib",
+    "win_board_log"
+  ]
+}

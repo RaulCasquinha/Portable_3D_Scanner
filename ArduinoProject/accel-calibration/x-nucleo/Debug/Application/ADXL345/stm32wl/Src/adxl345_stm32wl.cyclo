@@ -1,0 +1,10 @@
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:27:6:ADXL345_STM32WL_DelayMs	1
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:61:26:ADXL345_STM32WL_ConfigSpi	4
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:77:18:ADXL345_STM32WL_ReadSpi	5
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:108:18:ADXL345_STM32WL_WriteSpi	5
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:139:27:ADXL345_STM32WL_GetSpiPlatform	1
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:155:25:CheckSpiTransfer	5
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:181:25:SendCommand	5
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:210:13:SelectDevice	1
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:219:13:DeselectDevice	1
+../Application/ADXL345/stm32wl/Src/adxl345_stm32wl.c:350:13:IsValidSize	3

@@ -1,0 +1,6 @@
+../Application/App/Src/app_accel.c:50:6:APP_ACCEL_Init	48	static
+../Application/App/Src/app_accel.c:73:6:APP_ACCEL_ReadG	56	static
+../Application/App/Src/app_accel.c:93:6:APP_ACCEL_ReadTemperature	16	static
+../Application/App/Src/app_accel.c:99:13:IsNewSample	24	static
+../Application/App/Src/app_accel.c:182:13:SetSpiMode	16	static
+../Application/App/Src/app_accel.c:190:13:WaitForNewSample	16	static
